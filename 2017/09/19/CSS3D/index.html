@@ -7,18 +7,20 @@
   
   
   
-  <title>Archives: 2017 | Hexo</title>
+  <title>CSS3D | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Goals determine what you are going to be">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://localhost:4000/archives/2017/index.html">
+  <meta name="description" content="序言在如今生活丰富多彩的世界，3D的功劳功不可没，因为它的存在，我们能感受到炫酷的3D场景。而WEB也是顺应时代的潮流，在网页中添加了CSS3D这个API实现了3D效果。本篇文章则是记录了自己在CSS3D中的学习。">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3D">
+<meta property="og:url" content="http://localhost:4000/2017/09/19/CSS3D/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Goals determine what you are going to be">
+<meta property="og:description" content="序言在如今生活丰富多彩的世界，3D的功劳功不可没，因为它的存在，我们能感受到炫酷的3D场景。而WEB也是顺应时代的潮流，在网页中添加了CSS3D这个API实现了3D效果。本篇文章则是记录了自己在CSS3D中的学习。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-19T14:37:30.847Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="Goals determine what you are going to be">
+<meta name="twitter:title" content="CSS3D">
+<meta name="twitter:description" content="序言在如今生活丰富多彩的世界，3D的功劳功不可没，因为它的存在，我们能感受到炫酷的3D场景。而WEB也是顺应时代的潮流，在网页中添加了CSS3D这个API实现了3D效果。本篇文章则是记录了自己在CSS3D中的学习。">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -43,8 +45,8 @@
           fancybox: true,
           animate: true,
           isHome: false,
-          isPost: false,
-          isArchive: true,
+          isPost: true,
+          isArchive: false,
           isTag: false,
           isCategory: false,
           open_in_new: false
@@ -249,399 +251,201 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-CSS3D" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a  href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2017/09/19/CSS3D/" class="archive-article-date">
-      <time datetime="2017-09-19T14:11:32.000Z" itemprop="datePublished">09-19</time>
+    <div class="article-meta">
+      <a  href="/2017/09/19/CSS3D/" class="article-date">
+      <time datetime="2017-09-19T14:11:32.000Z" itemprop="datePublished">2017-09-19</time>
 </a>
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2017/09/19/CSS3D/">CSS3D</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS3D
     </h1>
   
 
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/前端/">前端</a>
     </div>
 
 
-          
+        
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>在如今生活丰富多彩的世界，3D的功劳功不可没，因为它的存在，我们能感受到炫酷的3D场景。而WEB也是顺应时代的潮流，在网页中添加了CSS3D这个API实现了3D效果。本篇文章则是记录了自己在CSS3D中的学习。</p>
+<a id="more"></a>
+<h2 id="CSS3D"><a href="#CSS3D" class="headerlink" title="CSS3D"></a>CSS3D</h2><h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ol>
+<li>-webkit-perspective: number;</li>
+<li>-webkit-perspective-origin: 50% 50%;</li>
+<li>-webkit-transform-style: preserve-3d;</li>
+</ol>
+<h3 id="每个API对应的定义和用法"><a href="#每个API对应的定义和用法" class="headerlink" title="每个API对应的定义和用法"></a>每个API对应的定义和用法</h3><p>perspective： perspective 属性定义 3D 元素距视图的距离，以像素计。该属性允许您改变 3D 元素查看 3D 元素的视图。当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。（perspective: number|none）</p>
+<p>perspective-origin： perspective-origin 属性定义 3D 元素所基于的 X 轴和 Y 轴。该属性允许您改变 3D 元素的底部位置。<br>当为元素定义 perspective-origin 属性时，其子元素会获得透视效果，而不是元素本身。(perspective-origin: x-axis y-axis。默认都为50%)</p>
+<p>transform-style： transform-style 属性规定如何在 3D 空间中呈现被嵌套的元素。(transform-style: flat|preserve-3d;flat    子元素将不保留其 3D 位置。preserve-3d    子元素将保留其 3D 位置。)</p>
+
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2017/09/19/CSS3D/">CSS3D</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 覃永利 的个人博客">覃永利</a></p>
+        <p><span>发布时间:</span>2017年09月19日 - 22时11分</p>
+        <p><span>最后更新:</span>2017年09月19日 - 22时37分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/09/19/CSS3D/" title="CSS3D">http://localhost:4000/2017/09/19/CSS3D/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://localhost:4000/2017/09/19/CSS3D/　　作者: 覃永利" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+  
+    <a  href="/2017/08/03/内存空间详细图解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">内存空间详细图解</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2017/08/03/内存空间详细图解/" class="archive-article-date">
-      <time datetime="2017-08-03T11:36:34.000Z" itemprop="datePublished">08-03</time>
-</a>
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2017/08/03/内存空间详细图解/">内存空间详细图解</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVASCRIPT/">JAVASCRIPT</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2017/05/17/跨域资源共享/" class="archive-article-date">
-      <time datetime="2017-05-17T04:04:30.000Z" itemprop="datePublished">05-17</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2017/05/17/跨域资源共享/">跨域资源共享</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2017/05/16/二进制数组/" class="archive-article-date">
-      <time datetime="2017-05-16T06:04:16.000Z" itemprop="datePublished">05-16</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2017/05/16/二进制数组/">二进制数组</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2017/05/13/HTML5之细节/" class="archive-article-date">
-      <time datetime="2017-05-12T16:01:09.000Z" itemprop="datePublished">05-13</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2017/05/13/HTML5之细节/">HTML5之细节</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2017/05/12/地理位置/" class="archive-article-date">
-      <time datetime="2017-05-12T15:23:30.000Z" itemprop="datePublished">05-12</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2017/05/12/地理位置/">地理位置</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2017/05/10/离线应用本地缓存/" class="archive-article-date">
-      <time datetime="2017-05-10T02:31:49.000Z" itemprop="datePublished">05-10</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2017/05/10/离线应用本地缓存/">离线应用本地缓存</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2017/05/07/本地存储/" class="archive-article-date">
-      <time datetime="2017-05-07T05:06:03.000Z" itemprop="datePublished">05-07</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2017/05/07/本地存储/">本地存储</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2017/05/06/WebRTC/" class="archive-article-date">
-      <time datetime="2017-05-06T05:46:31.000Z" itemprop="datePublished">05-06</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2017/05/06/WebRTC/">WebRTC</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a  href="/2017/04/14/通讯API/" class="archive-article-date">
-      <time datetime="2017-04-14T10:24:03.000Z" itemprop="datePublished">04-14</time>
-</a>
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a  class="archive-article-title" href="/2017/04/14/通讯API/">通讯API</a>
-    </h1>
-  
-
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/前端/">前端</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2017/page/2/">2</a><a class="page-number" href="/archives/2017/page/3/">3</a><a class="extend next" rel="next" href="/archives/2017/page/2/">Next &raquo;</a>
-    </nav>
-  
-
-
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#序言"><span class="toc-number">1.</span> <span class="toc-text">序言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS3D"><span class="toc-number">2.</span> <span class="toc-text">CSS3D</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#API"><span class="toc-number">2.1.</span> <span class="toc-text">API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#每个API对应的定义和用法"><span class="toc-number">2.2.</span> <span class="toc-text">每个API对应的定义和用法</span></a></li></ol></li></ol>
 </div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2017/08/03/内存空间详细图解/" title="下一篇: 内存空间详细图解">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/19/CSS3D/">CSS3D</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/03/内存空间详细图解/">内存空间详细图解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/17/跨域资源共享/">跨域资源共享</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/16/二进制数组/">二进制数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/13/HTML5之细节/">HTML5之细节</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/12/地理位置/">地理位置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/10/离线应用本地缓存/">离线应用本地缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/07/本地存储/">本地存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/06/WebRTC/">WebRTC</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/14/通讯API/">通讯API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/11/深入理解overflow/">深入理解overflow</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/11/border深入了解/">border深入了解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/模块化/">模块化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/gulp自动化/">gulp自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/22/深入理解vertical-align/">深入理解vertical-align</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/22/深入理解padding/">深入理解padding</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/22/深入理解line-height/">深入理解line-height</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/深入了解float/">深入了解float</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/深入理解position/">深入理解absolute</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/19/深入理解CSS-margin/">深入理解CSS margin</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/基于multer的数据上传与图像显示/">基于multer的数据上传与图像显示</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+
+<section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  
+</section></div>
       <footer id="footer">
     <div class="outer">
         <div id="footer-info">
@@ -729,17 +533,6 @@ ga('send', 'pageview');
         };
     })
 </script>
-
-    <button class="hide-labels">TAG 开关</button>
-    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js">
-    </script>
-    <script>
-        $(document).ready(function() {
-            $("button").click(function() {
-                $(".article-info").toggle(200);
-            });
-        });
-    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>

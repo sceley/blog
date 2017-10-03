@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>通讯API | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="序言:WebSocket是HTML5提供的在Web应用程序中客户端与服务器端之间的进行的非HTTP的通讯机制。它实现了用HTTP不容易实现的服务器端的数据推送等智能通讯技术,因此受到关注。">
+<meta name="keywords" content="HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通讯API">
+<meta property="og:url" content="http://localhost:4000/2017/04/14/通讯API/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="序言:WebSocket是HTML5提供的在Web应用程序中客户端与服务器端之间的进行的非HTTP的通讯机制。它实现了用HTTP不容易实现的服务器端的数据推送等智能通讯技术,因此受到关注。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-19T14:04:41.409Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通讯API">
+<meta name="twitter:description" content="序言:WebSocket是HTML5提供的在Web应用程序中客户端与服务器端之间的进行的非HTTP的通讯机制。它实现了用HTTP不容易实现的服务器端的数据推送等智能通讯技术,因此受到关注。">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/logo.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">覃永利</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">Goals determine what you are going to be</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder=" Search...">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/sceley" title="github">github</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/HTML5/" style="font-size: 16.67px;">HTML5</a> <a href="/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/tags/JAVASCRIPT/" style="font-size: 13.33px;">JAVASCRIPT</a> <a href="/tags/NODE-JS/" style="font-size: 10px;">NODE.JS</a> <a href="/tags/模块化/" style="font-size: 10px;">模块化</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.csdn.net/baidu_21483933">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://segmentfault.com/blog/maocg_web">segmentfault</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.jianshu.com/users/eb37ef89c746/latest_articles">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱动漫,爱游戏,爱编程,爱运动,爱的太多了!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">覃永利</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">覃永利</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">Goals determine what you are going to be</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/sceley" title="github">github</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-通讯API" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/04/14/通讯API/" class="article-date">
+      <time datetime="2017-04-14T10:24:03.000Z" itemprop="datePublished">2017-04-14</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      通讯API
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="序言"><a href="#序言" class="headerlink" title="序言:"></a>序言:</h2><p>WebSocket是HTML5提供的在Web应用程序中客户端与服务器端之间的进行的非HTTP的通讯机制。它实现了用HTTP不容易实现的服务器端的数据推送等智能通讯技术,因此受到关注。</p>
+<a id="more"></a>
+<h2 id="webSocket"><a href="#webSocket" class="headerlink" title="webSocket"></a>webSocket</h2><h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>建立与服务器的通讯连接</p>
+<pre><code>const webSocket = new WebSocket(&quot;ws://localhost:8080&quot;)
+//url必须以&quot;ws&quot;或&quot;wss&quot;开头(加密通讯时)文字开头
+</code></pre><p>对服务器发送数据</p>
+<pre><code>webSocket.send(data);
+//data可以是JSON对象转换为文本数据, 或着blob对象或arraybuffer对像
+</code></pre><p>获取信息</p>
+<pre><code>webSocket.onmassage = (e) =&gt; {
+    let massage = e.data;
+};
+</code></pre><p>监听socket的打开事件</p>
+<pre><code>websocket.onopen = () =&gt; {
+
+};
+</code></pre><p>监听socket的关闭事件</p>
+<pre><code>webSocket.onclose = () =&gt; {
+
+}
+</code></pre><p>切断通信连接</p>
+<pre><code>webSocket.close();
+</code></pre><p>客户端接收数据类型</p>
+<pre><code>websocket.binaryType = arraybuffer || blob;
+</code></pre><h3 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h3><p>主要通过ws、 socket.io模块来实现</p>
+<p>ws模块(a Node.js WebSocket library)</p>
+<p>ws是一个简单易用，快速，经过彻底测试的WebSocket客户端和服务器实现。</p>
+<pre><code>1. Install
+    npm install --save ws
+
+2. Broadcast example
+    const WebSocket = require(&apos;ws&apos;);
+    const wss = new WebSocket.Server({ port: 8080 });
+
+    // Broadcast to all.(向所有连接的socket发送数据)
+    wss.broadcast = (data) =&gt; {
+         wss.clients.forEach((client) =&gt; {
+            if (client.readyState === WebSocket.OPEN) {
+                  client.send(data);
+               }
+          });
+    };
+
+    wss.on(&apos;connection&apos;, (ws) =&gt; {
+        ws.on(&apos;message&apos;, (data) =&gt; {
+            // Broadcast to everyone else.(像其他人广播数据)
+            wss.clients.forEach((client) =&gt; {
+                if (client !== ws &amp;&amp; client.readyState === WebSocket.OPEN) {
+                    client.send(data);
+                }
+            });
+        });
+    });
+
+3. ExpressJS example
+    const express = require(&apos;express&apos;);
+    const http = require(&apos;http&apos;);
+    const url = require(&apos;url&apos;);
+    const WebSocket = require(&apos;ws&apos;);
+
+    const app = express();
+    const server = http.createServer(app);
+    const wss = new WebSocket.Server({ server });
+
+    app.use((req, res) =&gt; {
+      res.send({ msg: &quot;hello&quot; });
+    });
+
+    wss.on(&apos;connection&apos;, (ws) =&gt; {
+      const location = url.parse(ws.upgradeReq.url, true);
+      // You might use location.query.access_token to authenticate or share sessions
+      // or ws.upgradeReq.headers.cookie
+      ws.on(&apos;message&apos;, (message) =&gt; {
+        console.log(&apos;received: %s&apos;, message);
+      });
+      ws.send(&apos;something&apos;);
+    });
+
+    server.listen(8080, () =&gt; {
+      console.log(&apos;Listening on %d&apos;, server.address().port);
+    });
+</code></pre><p>socket.io模块</p>
+<pre><code>let io = require(&quot;socket.io&quot;);
+//服务器模块引入
+
+let socket = io.listen(server);
+//server为一个http服务器
+
+&lt;script src=&quot;/socket.io/socket.io.js&quot;&gt;&lt;/script&gt;
+//服务端引入socketio
+
+socket.on(&apos;connection&apos;, callback);
+socket.on(&apos;disconnection&apos;, callback);
+socket.on(&quot;message&quot;, (msg) =&gt; {});
+socket.send();
+//服务器端与客户端接收数据与发送数据共享相同的API
+
+事件发送:
+socket.emit(event, data, [callback])
+//callback由对方进行调用及形参的传进
+
+事件监听:
+socket.on(event, (data, fn) =&gt; {});
+socket.once();
+
+在服务器端保存数据:
+socket.set(name, value, [callback]);
+socket.get(name, callback)
+//callback: (err, docs) =&gt; {};
+
+广播消息:
+io.sockets.
+socket.broadcast.
+
+使用命名空间:
+io.of(namespace)
+var chat = io.of(&quot;/chat&quot;);
+chat.on(event(&quot;connection&quot;), callback);
+var chat = io.connect(&quot;http://localhost/chat&quot;);
+</code></pre><h2 id="Server-sent-Events"><a href="#Server-sent-Events" class="headerlink" title="Server-sent Events"></a>Server-sent Events</h2><p>由服务器端发送一些事件, 由客户端接收这些事件</p>
+<p>是一种从服务器端发送到客户端的单向通信机制</p>
+<h3 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h3><pre><code>var source = new EventSource(url);
+source.onmessage = (e) =&gt; {e.data};
+source.onopen = () =&gt; {};
+source.onerror = (e) =&gt; {};
+source.close();
+</code></pre><h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><p>发送数据</p>
+<p>服务器端发送的数据只能以一个字符串的形式发送，对象必须转为JSON字符串进行发送</p>
+<p>指定响应头</p>
+<pre><code>res.writeHeader(200, {&quot;Content-Type&quot;: &quot;text/event-stream&quot;}, 
+&quot;Cache-Control&quot;: &quot;no-cache&quot;);
+//必须指定浏览器不缓存服务器发送的数据
+</code></pre><p>发送事件</p>
+<pre><code>echo &quot;id: requests \n\n&quot;
+echo &quot;data: 数据 \n\n&quot;
+echo &quot;retry: 5000\n\n&quot;
+//每行数据之前必须书写&quot;data: &quot;前缀，同时在行结尾需书写&quot;\n\n&quot;换行标志
+//指定客户端每隔多长时间与服务器建立一次连接并获取事件流，不指定由浏览器决定
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2017/04/14/通讯API/">通讯API</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 覃永利 的个人博客">覃永利</a></p>
+        <p><span>发布时间:</span>2017年04月14日 - 18时24分</p>
+        <p><span>最后更新:</span>2017年09月19日 - 22时04分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/14/通讯API/" title="通讯API">http://localhost:4000/2017/04/14/通讯API/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://localhost:4000/2017/04/14/通讯API/　　作者: 覃永利" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2017/05/06/WebRTC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          WebRTC
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2017/04/11/深入理解overflow/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入理解overflow</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#序言"><span class="toc-number">1.</span> <span class="toc-text">序言:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#webSocket"><span class="toc-number">2.</span> <span class="toc-text">webSocket</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端"><span class="toc-number">2.1.</span> <span class="toc-text">客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器端"><span class="toc-number">2.2.</span> <span class="toc-text">服务器端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Server-sent-Events"><span class="toc-number">3.</span> <span class="toc-text">Server-sent Events</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端-1"><span class="toc-number">3.1.</span> <span class="toc-text">客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务器"><span class="toc-number">3.2.</span> <span class="toc-text">服务器</span></a></li></ol></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2017/05/06/WebRTC/" title="上一篇: WebRTC">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2017/04/11/深入理解overflow/" title="下一篇: 深入理解overflow">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/09/19/CSS3D/">CSS3D</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/03/内存空间详细图解/">内存空间详细图解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/17/跨域资源共享/">跨域资源共享</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/16/二进制数组/">二进制数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/13/HTML5之细节/">HTML5之细节</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/12/地理位置/">地理位置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/10/离线应用本地缓存/">离线应用本地缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/07/本地存储/">本地存储</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/06/WebRTC/">WebRTC</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/14/通讯API/">通讯API</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/11/深入理解overflow/">深入理解overflow</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/11/border深入了解/">border深入了解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/模块化/">模块化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/08/gulp自动化/">gulp自动化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/22/深入理解vertical-align/">深入理解vertical-align</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/22/深入理解padding/">深入理解padding</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/22/深入理解line-height/">深入理解line-height</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/深入了解float/">深入了解float</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/深入理解position/">深入理解absolute</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/19/深入理解CSS-margin/">深入理解CSS margin</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/基于multer的数据上传与图像显示/">基于multer的数据上传与图像显示</a></li></ul>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+
+<section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  
+</section></div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 覃永利
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 4;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
